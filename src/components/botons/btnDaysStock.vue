@@ -35,7 +35,6 @@
     .btnDaysStock {
         width: 247px;
         height: 78px;
-
         border-radius: 200px;
         display: flex;
         justify-content: center;

@@ -1,12 +1,32 @@
 <template>
-    <button class="btnPrimary">
-        <div class="btnPrimary__text">TODAY</div>
+    <button class="btnPrimary" :class="{'active': isSelected}"  @click="select">
+        <div class="btnPrimary__text"  >{{title}}</div>
     </button>
 </template>
 
 <script>
     export default {
-        name: "btnPrimary"
+        name: "btnPrimary",
+        props: {
+            title: {
+                type: String,
+                required:true
+            },
+            selectedButton: {
+                type: String
+            }
+        },
+        computed: {
+          isSelected(){
+              return this.title === this.selectedButton
+          }
+        },
+        methods: {
+            select(){
+                this.$emit('selecting', this.title)
+            }
+        }
+
     }
 </script>
 
@@ -24,15 +44,15 @@
         border: none;
         color: $gray-dark;
         outline:none !important;
+        margin-right: 15px;
+        text-transform: uppercase;
 
         &:hover {
             background: $main-mid;
             color: white;
         }
 
-        &:active {
-            background: $main-mid;
-        }
+
 
         &__text {
             font-family: 'Montserrat', sans-serif;
@@ -41,10 +61,13 @@
             font-weight: 600;
             letter-spacing: 0.004em;
 
-
-
-
         }
+
+
+    }
+    .active {
+        background: $main-mid  !important;
+        color: white;
     }
 
 </style>

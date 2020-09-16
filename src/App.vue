@@ -1,27 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-
-    <btn-primary></btn-primary>
-    <btn-back></btn-back>
-    <btn-config></btn-config>
-    <btn-days-stock></btn-days-stock>
-
-    <router-view/>
-  </div>
+    <main-header @selectinga="selectButtoni"></main-header>
+    <main-body :period="period" ></main-body>
+    <main-footer></main-footer>
+   </div>
 </template>
 
 <script>
-  import BtnPrimary from "./components/botons/btnPrimary";
-  import BtnBack from "./components/botons/btnBack";
-  import BtnConfig from "./components/botons/btnConfig";
-  import BtnDaysStock from "./components/botons/btnDaysStock";
+  import MainHeader from "./components/layout/mainHeader";
+  import MainFooter from "./components/layout/mainFooter";
+  import MainBody from "./components/layout/mainBody";
 
   export default {
-    components: {BtnDaysStock, BtnConfig, BtnBack, BtnPrimary}
+    components: {MainBody, MainFooter, MainHeader},
+    data (){
+      return {
+        period: 'TODAY'
+      }
+    },
+    methods:{
+      selectButtoni(buttonistas) {
+        this.period = buttonistas
+      },
+    }
   }
 
 </script>
