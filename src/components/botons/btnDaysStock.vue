@@ -1,11 +1,13 @@
 <template>
-    <div class="btnDaysStock red">
+    <div class="btnDaysStock" :class="{'red': isRed}">
         <div class="btnDaysStock__icon">
-            <i class="fas fa-exclamation-triangle"></i>
+            <i v-if="isRed" class="fas fa-exclamation-triangle"></i>
+            <i v-else class="far fa-check-square"></i>
+
         </div>
         <div class="btnDaysStock__text">
             <div class="btnDaysStock__text__row">
-                <div class="btnDaysStock__main-number">99</div>
+                <div class="btnDaysStock__main-number">{{eta}}</div>
                 <div class="btnDaysStock__titel">DAYS</div>
             </div>
             <div class="btnDaysStock__subtitel">of stock</div>
@@ -18,14 +20,23 @@
 
 <script>
     export default {
-        name: "btnDaysStock"
+        name: "btnDaysStock",
+        props:{
+            eta: Number,
+            status: String
+        },
+        computed:{
+            isRed(){
+                return this.status === 'RED';
+            }
+        }
     }
 </script>
 
 <style lang="scss">
     @import "../../assets/scss/variables_colors";
     .red {
-        background-color: #c55b5b;
+        background-color: #c55b5b !important;
     }
 
     .green {
@@ -40,6 +51,7 @@
         justify-content: center;
         align-items: center;
         color: $white;
+        background-color: #5f9f1c;
 
 
         &__icon {

@@ -1,0 +1,64 @@
+{
+    "maxVolume" : 32.94,
+    "previous_status" : "RED",
+    "notification" : {
+        "timestamp" : "2020-08-04T04:48:58.000Z",
+        "raised" : true
+    },
+    "rgb_chart" : "https://static.insylo.io/12624801/devices/snapshot/rgbs/UBKXXXXXXXXXXX-2020-08-05T06:56:31Z.jpeg",
+    "last_update" : "2020-08-05T06:56:31.196Z",
+    "timeseries" : {
+        "ts" : [ 
+            "2020-08-01", 
+            "2020-08-02", 
+            "2020-08-03", 
+            "2020-08-04", 
+            "2020-08-05"
+        ],
+        "eta" : [ 
+            3.0, 
+            9.0, 
+            6.0, 
+            4.0, 
+            2.0
+        ],
+        "stock" : [ 
+            5900.0, 
+            17210.0, 
+            15230.0, 
+            12220.0, 
+            8350.0
+        ],
+        "avg_dcr" : [ 
+            1850.0, 
+            1850.0, 
+            2193.33333333333, 
+            2583.33333333333, 
+            2876.66666666667
+        ],
+        "dcr" : [ 
+            1850.0, 
+            2880.0, 
+            3020.0, 
+            2730.0, 
+            1130.0
+        ]
+    },
+    "average_consumption" : 2876.66666666667,
+    "eta" : 2.0,
+    "has_color_change" : true,
+    "current_stock" : 8350.0,
+    "eta_chart" : "https://insylo-content-XXXXXX.s3.eu-central-1.amazonaws.com/eta-XXXXXXXXX.png",
+    "maxCapacity" : 21411.0,
+    "status" : "RED",
+    "config":{
+		"minLoad" : 700.0,
+		"stateType" : {
+		    "eta" : "yes",
+		    "percent" : "yes"
+		},
+		"dataWindow" : 2.0,
+		"useDefaultConsumption" : "no",
+		"defaultDailyConsumption" : 700.0
+	}
+}

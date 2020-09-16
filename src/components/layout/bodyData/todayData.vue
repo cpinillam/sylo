@@ -4,15 +4,15 @@
             <sylo-svg class="syloSvg"></sylo-svg>
             <div class="currentWeight">
                 <i class="fas fa-weight-hanging"></i>
-                17.5
-                <span> Tons</span>
+               {{kiloToTons(mainData.current_stock)}}
+                <span>Tons</span>
             </div>
         </div>
         <div class="todayConsumption">
-           <div class="title"> Consumption</div>
-            <div class="text"> <i class="fas fa-weight-hanging"></i> 3.02 <span>Tons per day</span></div>
+           <div class="title"> Consumption Average</div>
+            <div class="text"> <i class="fas fa-weight-hanging"></i> {{kiloToTons( mainData.average_consumption)}} <span>Tons per day</span></div>
         </div>
-        <BtnDaysStock></BtnDaysStock>
+        <BtnDaysStock :eta="mainData.eta" :status="mainData.status" ></BtnDaysStock>
     </div>
 </template>
 
@@ -27,15 +27,23 @@
             BtnDaysStock
         },
         props:{
-            period:String
+            period:String,
+            mainData: Object
+
 
         },
+
         computed:{
             isselectedPeriod(){
                 return this.period === "TODAY"
             }
-        }
+        },
+        methods: {
 
+            kiloToTons(bigFloat) {
+                return (bigFloat / 1000).toString().slice(0, 5);
+            }
+        }
     }
 </script>
 
@@ -100,7 +108,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-size: 1.1rem;
+        font-size: 1.0em;
         font-family: 'Montserrat', sans-serif;
         color: $main-low;
 

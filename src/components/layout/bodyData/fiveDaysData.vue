@@ -1,5 +1,5 @@
 <template>
-    <div class="fiveDaysData" v-if="isselectedPeriod">
+    <div class="fiveDaysData" v-if="isSelectedPeriod">
 
 
         <div class="mainData">
@@ -8,7 +8,7 @@
                 <btn-primary title="Consumption average"></btn-primary>
             </div>
 
-            <main-chart></main-chart>
+            <main-chart :timeseries="mainData.timeseries"></main-chart>
 
         </div>
 
@@ -27,11 +27,12 @@
             MainChart
         },
         props:{
-            period: String
+            period: String,
+            mainData: Object
         },
 
         computed:{
-            isselectedPeriod(){
+            isSelectedPeriod(){
                 return this.period === "LAST 5 DAYS"
             }
         }
