@@ -1,25 +1,25 @@
 <template>
     <svg height="500" width="100%" viewBox="0 0 317.7 400" >
 
-        <g id="dia1" class="clicarme" @click="selectDay(0)">
+        <g id="dia1" class="clickable animaScale" @click="selectDay(0)">
 	        <line class="st0" x1="58.8" y1="354.2" x2="58.8" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[0]))"/>
             <line class="st1" x1="74.8" y1="354.2" x2="74.8" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[0]))"/>
 </g>
-        <g id="dia2" class="clicarme" @click="selectDay(1)">
+        <g id="dia2" class="clickable animaScale" @click="selectDay(1)">
 	        <line class="st0" x1="110" y1="354.2" x2="110" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[1]))"/>
             <line class="st1" x1="126" y1="354.2" x2="126" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[1]))"/>
 </g>
-        <g id="dia3" class="clicarme" @click="selectDay(2)">
+        <g id="dia3" class="clickable animaScale" @click="selectDay(2)">
 	        <line class="st0" x1="161.5" y1="354.2" x2="161.5" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[2]))"/>
             <line class="st1" x1="177.5" y1="354.2" x2="177.5" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[2]))"/>
 </g>
-        <g id="dia4" class="clicarme" @click="selectDay(3)">
+        <g id="dia4" class="clickable animaScale" @click="selectDay(3)">
 	        <line class="st0" x1="213" y1="354.2" x2="213" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[3]))"/>
             <line class="st1" x1="229" y1="354.2" x2="229" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[3]))"/>
 </g>
-        <g id="dia5" class="clicarme" @click="selectDay(4)">
-	        <line id="ligth" class="st0" x1="268" y1="354.2" x2="268" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[4]))"/>
-            <line id="dark" class="st1" x1="284" y1="354.2" x2="284" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[4]))"/>
+        <g id="dia5" class="clickable animaScale" @click="selectDay(4)">
+	        <line id="st0" class="st0" x1="268" y1="354.2" x2="268" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[4]))"/>
+            <line id="st1" class="st1" x1="284" y1="354.2" x2="284" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[4]))"/>
 </g>
         <rect x="37" y="341.9" class="st2" width="274" height="34.7"/>
         <g id="data-down">
@@ -38,11 +38,11 @@
         <line class="st6" x1="28" y1="342.2" x2="311" y2="342.2"/>
         <line class="st7" x1="24.7" y1="102" x2="307.7" y2="102"/>
         <line class="st6" x1="37" y1="354.2" x2="37" y2="124.8"/>
-        <g id="data-top">
+        <g id="data-top" class="animaSlideUp">
             <text id="main-date" transform="matrix(1 0 0 1 32.6665 18.0533)" class="st9 st4 st11">{{timeseries.ts[selectedDay]}}</text>
             <g><text transform="matrix(1 0 0 1 31.6999 63.3337)"><tspan x="0" y="0" class="st9 st10 st11">{{kiloToTons(timeseries.stock[selectedDay])}} </tspan><tspan x="4.3" y="15.8" class="st9 st4 st12">Tons</tspan></text></g>
             <g><text transform="matrix(1 0 0 1 104.5601 63.3335)"><tspan x="0" y="0" class="st9 st10 st11">{{kiloToTons(timeseries.dcr[selectedDay])}} </tspan><tspan x="8.1" y="15.8" class="st9 st4 st12">t/day</tspan></text></g>
-            <g><text transform="matrix(1 0 0 1 182.0051 63.3335)"><tspan x="0" y="0" class="st9 st10 st11">{{kiloToTons(timeseries.avg_dcr[selectedDay])}} </tspan><tspan x="8" y="15.8" class="st9 st4 st12">t/avg</tspan></text>	</g>
+            <g><text transform="matrix(1 0 0 1 182.0051 63.3335)"><tspan x="0" y="0" class="st9 st10 st11 ">{{kiloToTons(timeseries.avg_dcr[selectedDay])}} </tspan><tspan x="8" y="15.8" class="st9 st4 st12">t/avg</tspan></text>	</g>
             <g><text transform="matrix(1 0 0 1 274.281 63.3335)"><tspan x="0" y="0" class="st9 st10 st11">{{timeseries.eta[selectedDay]}}</tspan><tspan x="-4.1" y="15.8" class="st9 st4 st12">Day</tspan></text></g>
         </g>
 </svg>
@@ -105,7 +105,7 @@
     .st10{font-family:'Montserrat'; font-weight: 700}
     .st11{font-size:22px;}
     .st12{font-size:12px;}
-    .clicarme{
+    .clickable{
         cursor: pointer;
     }
 </style>

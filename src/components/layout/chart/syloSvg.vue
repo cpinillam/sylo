@@ -1,6 +1,6 @@
 <template>
     <div >
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <svg class="animaSlideDown" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              viewBox="0 0 181.7 328.3" style="enable-background:new 0 0 181.7 328.3;" xml:space="preserve">
 
             <g id="base">
@@ -74,7 +74,7 @@
 		</g>
 	</g>
 </g>
-            <g id="grupo-roja" :class="{ activeStatus: statusRed }">
+            <g id="grupo-roja" :class="{activeStatus : statusRed}">
 	            <g id="roja">
 		<path class="st8" d="M142.5,197.4v-8.2l-97.3-1l0,10.5h0c0,7.2,4.8,14.4,14.4,19.9c19.1,11,49.9,11,68.9,0
 			C138.4,212.8,143.1,205,142.5,197.4z"/>
@@ -98,7 +98,7 @@
 			c19.1,11,49.9,11,68.9,0c9.7-5.7,14.4-13.1,14.1-20.5C142.1,196.4,137.4,203.2,128.4,208.5z"/>
 	</g>
             </g>
-            <g id="grupo-amarilla">
+            <g id="grupo-amarilla" :class="{activeStatus : statusYellow}">
 	<g id="amarilla">
 		<path class="st13" d="M143.5,197.4v-8.2l-97.3-1l0,10.5h0c0,7.2,4.8,14.4,14.4,19.9c19.1,11,49.9,11,68.9,0
 			C139.4,212.8,144.1,205,143.5,197.4z"/>
@@ -166,7 +166,7 @@
 			c19.1,11,49.9,11,68.9,0c9.7-5.7,14.4-13.1,14.1-20.5C143.1,155.4,138.4,162.2,129.4,167.5z"/>
 	</g>
 </g>
-            <g id="grupo-verde">
+            <g id="grupo-verde" :class="{activeStatus : statusGreen}">
 	<g id="verde">
 		<path class="st0" d="M142.5,197.4v-8.2l-97.3-1l0,10.5h0c0,7.2,4.8,14.4,14.4,19.9c19.1,11,49.9,11,68.9,0
 			C138.4,212.8,143.1,205,142.5,197.4z"/>
@@ -521,7 +521,7 @@
         name: "syloSvg",
         data (){
             return{
-                statusRed:true,
+                statusRed:false,
                 statusGreen:false,
                 statusYellow:false
             }
@@ -562,11 +562,8 @@
 </script>
 
 <style scoped>
-    .activeStatus{
+    .activeStatus {
         opacity: 1 !important;
-    }
-    .inactiveStatus{
-        opacity: 0;
     }
 
     #grupo-verde {

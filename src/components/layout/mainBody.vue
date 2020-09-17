@@ -20,9 +20,7 @@
         props: {
             period: String,
             mainData: Object
-
         }
-
 
     }
 </script>
@@ -33,5 +31,6 @@
         padding: 20px;
         margin-bottom: 100px;
         width: 100%;
+
     }
 </style>

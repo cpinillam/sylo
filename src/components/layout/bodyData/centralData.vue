@@ -1,7 +1,9 @@
 <template>
     <div>
-        <line-bar v-if="graph" :stock="stock" :max-capacity="maxCapacity" @click.native="selectView('viewSylo')"></line-bar>
-        <sylo-svg v-else class="syloSvg" :status="status" @click.native="selectView('viewGraph')"></sylo-svg>
+        <line-bar v-if="graph" :stock="stock" :max-capacity="maxCapacity" @click.native="selectView('viewSylo')">
+        </line-bar>
+        <sylo-svg v-else class="syloSvg" :status="status" @click.native="selectView('viewGraph')">
+        </sylo-svg>
     </div>
 </template>
 

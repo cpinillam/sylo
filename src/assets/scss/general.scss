@@ -8,3 +8,82 @@ button {
 body {
   background-color: #F0F1F2;
 }
+
+.animaSlideIn {
+  animation-name: slideIn;
+  animation-duration: .2s;
+}
+
+.animaSlideDown {
+  animation-name: slideDown;
+  animation-duration: .3s;
+}
+
+.animaSlideUp {
+  animation-name: slideUp;
+  animation-duration: .2s;
+}
+
+.animaTransition{
+  transition: all 0.2s;
+}
+
+.animaScale{
+  animation-name: scaleUp;
+  animation-duration: .4s;
+  transform-origin: bottom;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(20%) scale(.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+
+  }
+}
+
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+
+  }
+}
+

@@ -1,21 +1,32 @@
 <template>
-    <div class="todayData" v-if="isselectedPeriod">
+    <div class="todayData animaSlideIn" v-if="isselectedPeriod">
         <div class="mainMeasure">
+            <p class="animaTransition" :class="{paragraphGraph : !graph }">
+                {{currentDate()}}<br>
+                <span>{{kiloToTons(mainData.maxCapacity)}} Tons of Max Capacity
+                </span>
+            </p>
 
-            <p :class="{paragraphGraph : !graph }">{{TodayDate()}}<br><span>{{kiloToTons(mainData.maxCapacity)}} Tons of Max Capacity</span></p>
+            <central-data class="clickable" @mainview="selectView" :graph="graph" :status="mainData.status" :stock="mainData.current_stock" :max-capacity="mainData.maxCapacity">
+            </central-data>
 
-                <central-data class="clickable" @mainview="selectView" :graph="graph" :status="mainData.status" :stock="mainData.current_stock" :max-capacity="mainData.maxCapacity"></central-data>
-            <div class="currentWeight" :class="{graphline : graph }">
-                <i class="fas fa-weight-hanging"></i>
+            <div class="currentWeight animaTransition" :class="{graphline : graph }">
+                <i class="fas fa-weight-hanging">
+                </i>
                {{kiloToTons(mainData.current_stock)}}
                 <span>Tons</span>
             </div>
         </div>
         <div class="todayConsumption">
            <div class="title"> Consumption Average</div>
-            <div class="text"> <i class="fas fa-weight-hanging"></i> {{kiloToTons( mainData.average_consumption)}} <span>Tons per day</span></div>
+            <div class="text">
+                <i class="fas fa-weight-hanging">
+                </i> {{kiloToTons( mainData.average_consumption)}}
+                <span>Tons per day</span>
+            </div>
         </div>
-        <BtnDaysStock :eta="mainData.eta" :status="mainData.status" ></BtnDaysStock>
+        <BtnDaysStock :eta="mainData.eta" :status="mainData.status" >
+        </BtnDaysStock>
     </div>
 </template>
 
@@ -23,7 +34,6 @@
 
     import BtnDaysStock from "../../../components/botons/btnDaysStock";
     import CentralData from "./centralData";
-
     export default {
         name: "todayData",
         components: {
@@ -33,10 +43,10 @@
 
         data(){
             return {
-                graph:false
+                graph:false,
+                currentDay:"30/08/1989"
             }
         },
-
         props:{
             period:String,
             mainData: Object
@@ -53,28 +63,16 @@
             kiloToTons(bigFloat) {
                 return (bigFloat / 1000).toString().slice(0, 5);
             },
-           TodayDate(){
-               let today = new Date();
-               let dd = String(today.getDate()).padStart(2, '0');
-               let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-               let yyyy = today.getFullYear();
 
-               today = mm + '/' + dd + '/' + yyyy;
-                return today;
+            currentDate(){
+               this.currentDay = this.mainData.last_update;
+                if (!this.currentDay) return 1;
+               return (this.currentDay).toString().slice(0, 10);
             },
 
-
             selectView(view){
-                    if (view === 'viewGraph'){
-                        this.graph = true
-                    }
-                    else {
-                        this.graph = false
-                    }
+                    this.graph = view === 'viewGraph';
                 }
-
-
-
 
         }
     }
@@ -88,6 +86,8 @@
         align-items: center;
         flex-direction: column;
     }
+
+
     .mainMeasure {
         width: 100%;
         background-color: white;
@@ -112,8 +112,6 @@
             }
 
         }
-
-
 
         .paragraphGraph {
             font-size: 1rem;

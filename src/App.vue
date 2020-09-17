@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <main-header @selectinga="selectButtoni"></main-header>
+    <main-header @selectButtonPeriod="selectPeriod"></main-header>
     <main-body :period="period" :main-data="stockData" ></main-body>
     <main-footer></main-footer>
    </div>
@@ -16,34 +16,28 @@
     data (){
       return {
         period: 'TODAY',
-          info: {},
           stockData: {}
       }
     },
 
       created() {
-        this.getEntradas();
+        this.getData();
 
 
       },
       methods:{
 
-        selectButtoni(buttonistas) {
-            this.period = buttonistas
+        selectPeriod(currentPeriod) {
+            this.period = currentPeriod
           },
 
-        setData (response){
-            this.stockData.current_stock = response.data.current_stock;
 
-        },
-
-        async getEntradas(){
+        async getData(){
             const axios = require('axios');
             {
                 axios.get('data/data.json')
                     .then(response => {
                         this.stockData = response.data;
-
 
                     })
                     .catch(error => console.log(error))
@@ -55,7 +49,4 @@
   }
 
 </script>
-<style lang="scss">
-    @import "assets/scss/variables_colors";
 
-</style>

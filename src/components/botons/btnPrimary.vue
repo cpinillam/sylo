@@ -1,6 +1,6 @@
 <template>
     <button class="btnPrimary" :class="{'active': isSelected}"  @click="select">
-        <div class="btnPrimary__text"  >{{title}}</div>
+        {{title}}
     </button>
 </template>
 
@@ -23,7 +23,7 @@
         },
         methods: {
             select(){
-                this.$emit('selecting', this.title)
+                this.$emit('selectButton', this.title)
             }
         }
 
@@ -46,21 +46,17 @@
         outline:none !important;
         margin-right: 15px;
         text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        line-height: (26 / 12);
+        font-weight: 600;
+        letter-spacing: 0.004em;
+        transition: all 0.3s;
+
 
         &:hover {
             background: $main-mid;
             color: white;
-        }
-
-
-
-        &__text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
-            line-height: (26 / 12);
-            font-weight: 600;
-            letter-spacing: 0.004em;
-
         }
 
 

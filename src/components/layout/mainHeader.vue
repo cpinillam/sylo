@@ -6,11 +6,11 @@
         </div>
         <div class="MainHeader__title padding-horizontal">
             <div class="MainHeader__head">Stock levels</div>
-            <div class="MainHeader__subhead">ID: 645645</div>
+            <div class="MainHeader__subhead">INSYLO</div>
         </div>
         <div class="MainHeader__nav-bottom padding-horizontal">
-            <btn-primary title="TODAY" @selecting="selectButton" :selected-button="selectedButton"></btn-primary>
-            <btn-primary title="LAST 5 DAYS" @selecting="selectButton" :selected-button="selectedButton"></btn-primary>
+            <btn-primary title="TODAY" @selectButton="selectButton" :selected-button="selectedButton"></btn-primary>
+            <btn-primary title="LAST 5 DAYS" @selectButton="selectButton" :selected-button="selectedButton"></btn-primary>
         </div>
 
     </div>
@@ -29,9 +29,9 @@
             }
         },
         methods:{
-            selectButton(buttonista){
-                this.selectedButton =  buttonista;
-                this.$emit('selectinga', buttonista);
+            selectButton(blueButton){
+                this.selectedButton =  blueButton;
+                this.$emit('selectButtonPeriod', blueButton);
             }
         }
     }

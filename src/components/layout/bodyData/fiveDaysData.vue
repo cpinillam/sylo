@@ -1,17 +1,15 @@
 <template>
-    <div class="fiveDaysData" v-if="isSelectedPeriod">
-
-
+    <div class="fiveDaysData animaSlideIn" v-if="isSelectedPeriod">
         <div class="mainData">
             <div class="MainHeader__nav-bottom">
-                <btn-primary style="pointer-events: none;" title="Stock" ></btn-primary>
-                <btn-primary style="pointer-events: none;" title="Consumption average"></btn-primary>
+                <btn-primary style="pointer-events: none;" title="Stock" >
+                </btn-primary>
+                <btn-primary style="pointer-events: none;" title="Consumption average">
+                </btn-primary>
             </div>
-
-            <main-chart :timeseries="mainData.timeseries"></main-chart>
-
+            <main-chart :timeseries="mainData.timeseries">
+            </main-chart>
         </div>
-
     </div>
 </template>
 
@@ -35,16 +33,7 @@
             isSelectedPeriod(){
                 return this.period === "LAST 5 DAYS"
             }
-        },
-
-        data (){
-            return {
-                stock:true,
-                consumption:true,
-                stockin:"Stock"
-
-            }
-        },
+        }
 
     }
 </script>
@@ -56,7 +45,10 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+
     }
+
+
     .mainData {
         width: 100%;
         background-color: white;
@@ -66,10 +58,6 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-
-
-
-
 
     }
 

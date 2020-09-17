@@ -1,5 +1,5 @@
 <template>
-    <svg height="200" width="100%" viewBox="0 0 265 230" >
+    <svg class="animaSlideDown" height="200" width="100%" viewBox="0 0 265 230" >
         <path  class="cls-1 ts2" d="M35.91,173.66a108.2,108.2,0,0,1,91.65-155,108.23,108.23,0,0,1,102.84,60,109.8,109.8,0,0,1,10.44,61.16,108.69,108.69,0,0,1-9.91,33.86"/>
         <path :style="'stroke-dashoffset:' + getValueToGraph(stock)" class="cls-1" d="M35.91,173.66a108.2,108.2,0,0,1,91.65-155,108.23,108.23,0,0,1,102.84,60,109.8,109.8,0,0,1,10.44,61.16,108.69,108.69,0,0,1-9.91,33.86"/>
 
@@ -14,17 +14,14 @@
             maxCapacity: Number
         },
 
-        created() {
-            this.total = "--stroke-dashoffset:" + this.valueTotal
-        },
         methods: {
             convertToGraph(stockPercent){
                 let maxTons = 100;
                 let minTons = 0;
                 let maxPathValue = 460;
                 let minPathValue = 15;
-                let refvalue = (maxPathValue-minPathValue)/(maxTons-minTons);
-                return maxPathValue-(stockPercent*refvalue);
+                let refValue = (maxPathValue-minPathValue)/(maxTons-minTons);
+                return maxPathValue-(stockPercent*refValue);
 
             },
 

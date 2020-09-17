@@ -1,6 +1,7 @@
 <template>
     <button  class="btnConfig">
-        <i class="fas fas fa-list-ul"></i>
+        <i class="fas fas fa-list-ul">
+        </i>
     </button>
 </template>
 
@@ -20,6 +21,8 @@
         cursor: pointer;
         font-size: 1.5rem;
         opacity: 0.5;
+        transition: all 0.2s;
+
 
         i {
             position: absolute;

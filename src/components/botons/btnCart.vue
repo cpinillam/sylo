@@ -1,6 +1,7 @@
 <template>
     <div class="btnCart">
-        <i class="fas fa-shopping-cart"></i>
+        <i class="fas fa-shopping-cart">
+        </i>
     </div>
 </template>
 
@@ -30,6 +31,11 @@
         animation-iteration-count: infinite;
         animation-timing-function: linear;
         cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover{
+            transform: scale(1.1);
+        }
 
     }
 

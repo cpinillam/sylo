@@ -1,9 +1,10 @@
 <template>
     <div class="btnDaysStock" :class="{'red': isRed}">
         <div class="btnDaysStock__icon">
-            <i v-if="isRed" class="fas fa-exclamation-triangle"></i>
-            <i v-else class="far fa-check-square"></i>
-
+            <i v-if="isRed" class="fas fa-exclamation-triangle">
+            </i>
+            <i v-else class="far fa-check-square">
+            </i>
         </div>
         <div class="btnDaysStock__text">
             <div class="btnDaysStock__text__row">
@@ -12,9 +13,6 @@
             </div>
             <div class="btnDaysStock__subtitel">of stock</div>
         </div>
-
-
-
     </div>
 </template>
 
@@ -52,6 +50,7 @@
         align-items: center;
         color: $white;
         background-color: #5f9f1c;
+
 
 
         &__icon {

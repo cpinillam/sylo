@@ -1,6 +1,7 @@
 <template>
    <button class="btnBack">
-       <i class="fas fa-arrow-left"></i>
+       <i class="fas fa-arrow-left">
+       </i>
    </button>
 </template>
 
@@ -19,6 +20,8 @@
         cursor: pointer;
         font-size: 1.5rem;
         opacity: 0.5;
+        transition: all 0.2s;
+
 
         i {
             position: absolute;
@@ -26,7 +29,6 @@
             top: 50%;
             transform: translate(-50%, -50%);
         }
-
         &:hover {
             opacity: 1;
         }
