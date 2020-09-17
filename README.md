@@ -1,4 +1,8 @@
-# sylo
+# INSYLO TECHNICAL TEST 🥼:  UI DESIGN, FRONTEND DEVELOPMENT 🚀
+
+2 PROPUESTAS:  
+- GRAFICO SILO CON ESTADOS (ROJO, AMARILLO, VERDE)
+- CANTIDAD EN PORCENTAJE DE STOCK
 
 ## Project setup
 ```
@@ -15,5 +19,3 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
