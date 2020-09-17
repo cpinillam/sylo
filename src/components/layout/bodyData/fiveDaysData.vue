@@ -1,14 +1,14 @@
 <template>
-    <div class="fiveDaysData" v-if="isselectedPeriod">
+    <div class="fiveDaysData" v-if="isSelectedPeriod">
 
 
         <div class="mainData">
             <div class="MainHeader__nav-bottom">
-                <btn-primary title="Stock"></btn-primary>
-                <btn-primary title="Consumption average"></btn-primary>
+                <btn-primary style="pointer-events: none;" title="Stock" ></btn-primary>
+                <btn-primary style="pointer-events: none;" title="Consumption average"></btn-primary>
             </div>
 
-            <main-chart></main-chart>
+            <main-chart :timeseries="mainData.timeseries"></main-chart>
 
         </div>
 
@@ -27,14 +27,25 @@
             MainChart
         },
         props:{
-            period: String
+            period: String,
+            mainData: Object
         },
 
         computed:{
-            isselectedPeriod(){
+            isSelectedPeriod(){
                 return this.period === "LAST 5 DAYS"
             }
-        }
+        },
+
+        data (){
+            return {
+                stock:true,
+                consumption:true,
+                stockin:"Stock"
+
+            }
+        },
+
     }
 </script>
 

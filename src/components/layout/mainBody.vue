@@ -1,7 +1,7 @@
 <template>
     <div class="mainBody">
-        <today-data :period="period"></today-data>
-        <five-days-data :period="period"></five-days-data>
+        <today-data :period="period" :main-data="mainData"></today-data>
+        <five-days-data :period="period" :main-data="mainData"></five-days-data>
     </div>
 </template>
 
@@ -18,7 +18,9 @@
             }
         },
         props: {
-            period: String
+            period: String,
+            mainData: Object
+
         }
 
 

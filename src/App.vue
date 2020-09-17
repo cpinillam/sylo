@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <main-header @selectinga="selectButtoni"></main-header>
-    <main-body :period="period" ></main-body>
+    <main-body :period="period" :main-data="stockData" ></main-body>
     <main-footer></main-footer>
    </div>
 </template>
@@ -15,14 +15,43 @@
     components: {MainBody, MainFooter, MainHeader},
     data (){
       return {
-        period: 'TODAY'
+        period: 'TODAY',
+          info: {},
+          stockData: {}
       }
     },
-    methods:{
-      selectButtoni(buttonistas) {
-        this.period = buttonistas
+
+      created() {
+        this.getEntradas();
+
+
       },
+      methods:{
+
+        selectButtoni(buttonistas) {
+            this.period = buttonistas
+          },
+
+        setData (response){
+            this.stockData.current_stock = response.data.current_stock;
+
+        },
+
+        async getEntradas(){
+            const axios = require('axios');
+            {
+                axios.get('data/data.json')
+                    .then(response => {
+                        this.stockData = response.data;
+
+
+                    })
+                    .catch(error => console.log(error))
+            }
+        }
     }
+
+
   }
 
 </script>
