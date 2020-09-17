@@ -1,8 +1,11 @@
 <template>
     <div class="todayData" v-if="isselectedPeriod">
         <div class="mainMeasure">
-            <sylo-svg class="syloSvg"></sylo-svg>
-            <div class="currentWeight">
+
+            <p :class="{paragraphGraph : !graph }">{{TodayDate()}}<br><span>{{kiloToTons(mainData.maxCapacity)}} Tons of Max Capacity</span></p>
+
+                <central-data class="clickable" @mainview="selectView" :graph="graph" :status="mainData.status" :stock="mainData.current_stock" :max-capacity="mainData.maxCapacity"></central-data>
+            <div class="currentWeight" :class="{graphline : graph }">
                 <i class="fas fa-weight-hanging"></i>
                {{kiloToTons(mainData.current_stock)}}
                 <span>Tons</span>
@@ -19,30 +22,60 @@
 <script>
 
     import BtnDaysStock from "../../../components/botons/btnDaysStock";
-    import SyloSvg from "../../svg/syloSvg";
+    import CentralData from "./centralData";
+
     export default {
         name: "todayData",
         components: {
-            SyloSvg,
+            CentralData,
             BtnDaysStock
         },
+
+        data(){
+            return {
+                graph:false
+            }
+        },
+
         props:{
             period:String,
             mainData: Object
-
-
         },
 
         computed:{
             isselectedPeriod(){
                 return this.period === "TODAY"
             }
+
         },
         methods: {
 
             kiloToTons(bigFloat) {
                 return (bigFloat / 1000).toString().slice(0, 5);
-            }
+            },
+           TodayDate(){
+               let today = new Date();
+               let dd = String(today.getDate()).padStart(2, '0');
+               let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+               let yyyy = today.getFullYear();
+
+               today = mm + '/' + dd + '/' + yyyy;
+                return today;
+            },
+
+
+            selectView(view){
+                    if (view === 'viewGraph'){
+                        this.graph = true
+                    }
+                    else {
+                        this.graph = false
+                    }
+                }
+
+
+
+
         }
     }
 </script>
@@ -63,12 +96,36 @@
         position: relative;
         display: flex;
         justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        p{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: $main-low;
+            font-size: 1.5rem;
+            text-align: center;
+            line-height: 20px;
+
+            span {
+                font-size: 0.8rem;
+            }
+
+        }
 
 
-        .syloSvg {
-            width: 130px;
-            margin-top: -40px;
-            margin-bottom: -40px;
+
+        .paragraphGraph {
+            font-size: 1rem;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: left;
+
+            span {
+               visibility: hidden;
+            }
         }
 
         .currentWeight {
@@ -97,6 +154,14 @@
                 font-weight: 200;
                 color: $main-high;
             }
+
+        }
+
+        .graphline {
+
+            right: 50%;
+            bottom: 5%;
+            transform: translatex(50%);
 
         }
     }
@@ -131,6 +196,9 @@
                 font-weight: 400;
             }
         }
+    }
+    .clickable {
+        cursor: pointer
     }
 
 </style>

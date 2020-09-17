@@ -74,7 +74,7 @@
 		</g>
 	</g>
 </g>
-            <g id="grupo-roja">
+            <g id="grupo-roja" :class="{ activeStatus: statusRed }">
 	            <g id="roja">
 		<path class="st8" d="M142.5,197.4v-8.2l-97.3-1l0,10.5h0c0,7.2,4.8,14.4,14.4,19.9c19.1,11,49.9,11,68.9,0
 			C138.4,212.8,143.1,205,142.5,197.4z"/>
@@ -518,18 +518,70 @@
 
 <script>
     export default {
-        name: "syloSvg"
+        name: "syloSvg",
+        data (){
+            return{
+                statusRed:true,
+                statusGreen:false,
+                statusYellow:false
+            }
+        },
+        props:{
+            status: String
+        },
+        created() {
+          this.getStatus(this.status);
+        },
+        methods:{
+           async getStatus(status){
+
+                switch (status) {
+                    case 'RED':
+                        this.statusRed =true;
+                        this.statusGreen =false;
+                        this.statusYellow =false;
+                        break;
+                    case 'GREEN':
+                        this.statusRed =false;
+                        this.statusGreen =true;
+                        this.statusYellow =false;
+                        break;
+                    case 'YELLOW':
+                        this.statusRed =false;
+                        this.statusGreen =false;
+                        this.statusYellow =true;
+                        break;
+                    default:
+                        this.statusRed =true;
+                        this.statusGreen =false;
+                        this.statusYellow =false;
+                }
+            }
+         }
     }
 </script>
 
 <style scoped>
-    #grupo-verde{
+    .activeStatus{
+        opacity: 1 !important;
+    }
+    .inactiveStatus{
+        opacity: 0;
+    }
+
+    #grupo-verde {
         opacity: 0;
     }
 
     #grupo-amarilla {
         opacity: 0;
     }
+
+    #grupo-roja {
+        opacity: 0;
+    }
+
+
     .st0{fill:#71872B;}
     .st1{fill:#A9C359;}
     .st2{fill:#95B538;}

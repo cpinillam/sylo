@@ -4,8 +4,8 @@
 
         <div class="mainData">
             <div class="MainHeader__nav-bottom">
-                <btn-primary title="Stock"></btn-primary>
-                <btn-primary title="Consumption average"></btn-primary>
+                <btn-primary style="pointer-events: none;" title="Stock" ></btn-primary>
+                <btn-primary style="pointer-events: none;" title="Consumption average"></btn-primary>
             </div>
 
             <main-chart :timeseries="mainData.timeseries"></main-chart>
@@ -35,7 +35,17 @@
             isSelectedPeriod(){
                 return this.period === "LAST 5 DAYS"
             }
-        }
+        },
+
+        data (){
+            return {
+                stock:true,
+                consumption:true,
+                stockin:"Stock"
+
+            }
+        },
+
     }
 </script>
 

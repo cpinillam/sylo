@@ -2,24 +2,24 @@
     <svg height="500" width="100%" viewBox="0 0 317.7 400" >
 
         <g id="dia1" class="clicarme" @click="selectDay(0)">
-	        <line class="st0" x1="58.8" y1="354.2" x2="58.8" y2="138.3" :style="'stroke-dashoffset:' + valueTotal"/>
-            <line class="st1" x1="74.8" y1="354.2" x2="74.8" y2="138.3"/>
+	        <line class="st0" x1="58.8" y1="354.2" x2="58.8" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[0]))"/>
+            <line class="st1" x1="74.8" y1="354.2" x2="74.8" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[0]))"/>
 </g>
         <g id="dia2" class="clicarme" @click="selectDay(1)">
-	        <line class="st0" x1="110" y1="354.2" x2="110" y2="138.3"/>
-            <line class="st1" x1="126" y1="354.2" x2="126" y2="138.3"/>
+	        <line class="st0" x1="110" y1="354.2" x2="110" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[1]))"/>
+            <line class="st1" x1="126" y1="354.2" x2="126" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[1]))"/>
 </g>
         <g id="dia3" class="clicarme" @click="selectDay(2)">
-	        <line class="st0" x1="161.5" y1="354.2" x2="161.5" y2="138.3"/>
-            <line class="st1" x1="177.5" y1="354.2" x2="177.5" y2="138.3"/>
+	        <line class="st0" x1="161.5" y1="354.2" x2="161.5" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[2]))"/>
+            <line class="st1" x1="177.5" y1="354.2" x2="177.5" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[2]))"/>
 </g>
         <g id="dia4" class="clicarme" @click="selectDay(3)">
-	        <line class="st0" x1="213" y1="354.2" x2="213" y2="138.3"/>
-            <line class="st1" x1="229" y1="354.2" x2="229" y2="138.3"/>
+	        <line class="st0" x1="213" y1="354.2" x2="213" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[3]))"/>
+            <line class="st1" x1="229" y1="354.2" x2="229" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[3]))"/>
 </g>
         <g id="dia5" class="clicarme" @click="selectDay(4)">
-	        <line id="ligth" class="st0" x1="268" y1="354.2" x2="268" y2="138.3"/>
-            <line id="dark" class="st1" x1="284" y1="354.2" x2="284" y2="138.3"/>
+	        <line id="ligth" class="st0" x1="268" y1="354.2" x2="268" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.stock[4]))"/>
+            <line id="dark" class="st1" x1="284" y1="354.2" x2="284" y2="138.3" :style="'stroke-dashoffset:' + convertTograph(kiloToTons(timeseries.avg_dcr[4]))"/>
 </g>
         <rect x="37" y="341.9" class="st2" width="274" height="34.7"/>
         <g id="data-down">
@@ -54,7 +54,7 @@
         data(){
             return {
                 selectedDay: 4,
-                valueTotal: 150,
+                valueTotal: 8.35,
 
             }
         },
@@ -76,6 +76,13 @@
             },
 
             convertTograph(numero){
+                let maxTons = 25;
+                let minTons = 0;
+                let maxPathValue = 242;
+                let minPathValue = 25;
+                var refvalue = (maxPathValue-minPathValue)/(maxTons-minTons);
+
+                return maxPathValue-(numero*refvalue);
 
             }
 
@@ -86,7 +93,7 @@
 <style scoped>
     .st0{fill:none;stroke:#A8D1D3;stroke-width:12;stroke-miterlimit:10; stroke-linecap: round; stroke-dasharray: 242;}
 
-    .st1{fill:none;stroke:#2D2E83;stroke-width:12;stroke-miterlimit:10; stroke-linecap: round;}
+    .st1{fill:none;stroke:#2D2E83;stroke-width:5;stroke-miterlimit:10; stroke-linecap: round; stroke-dasharray: 242;}
     .st2{fill:#FFFFFF;}
     .st3{fill:#352641;}
     .st4{font-family:'Montserrat';}
