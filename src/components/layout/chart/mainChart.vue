@@ -41,9 +41,16 @@
         <g id="data-top" class="animaSlideUp">
             <text id="main-date" transform="matrix(1 0 0 1 32.6665 18.0533)" class="st9 st4 st11">{{timeseries.ts[selectedDay]}}</text>
             <g><text transform="matrix(1 0 0 1 31.6999 63.3337)"><tspan x="0" y="0" class="st9 st10 st11">{{kiloToTons(timeseries.stock[selectedDay])}} </tspan><tspan x="4.3" y="15.8" class="st9 st4 st12">Tons</tspan></text></g>
+            <g><text transform="matrix(1 0 0 1 31.6999 63.3337)"><tspan x="0" y="-20" class="st13">Stock</tspan></text></g>
+            
             <g><text transform="matrix(1 0 0 1 104.5601 63.3335)"><tspan x="0" y="0" class="st9 st10 st11">{{kiloToTons(timeseries.dcr[selectedDay])}} </tspan><tspan x="8.1" y="15.8" class="st9 st4 st12">t/day</tspan></text></g>
+            <g><text transform="matrix(1 0 0 1 104.5601 63.3335)"><tspan x="0" y="-20" class="st13">Consumption</tspan></text></g>
+            
             <g><text transform="matrix(1 0 0 1 182.0051 63.3335)"><tspan x="0" y="0" class="st9 st10 st11 ">{{kiloToTons(timeseries.avg_dcr[selectedDay])}} </tspan><tspan x="8" y="15.8" class="st9 st4 st12">t/avg</tspan></text>	</g>
+            <g><text transform="matrix(1 0 0 1 182.0051 63.3335)"><tspan x="0" y="-20" class="st13">Consumption Average</tspan></text></g>
+            
             <g><text transform="matrix(1 0 0 1 274.281 63.3335)"><tspan x="0" y="0" class="st9 st10 st11">{{timeseries.eta[selectedDay]}}</tspan><tspan x="-4.1" y="15.8" class="st9 st4 st12">Day</tspan></text></g>
+            <g><text transform="matrix(1 0 0 1 274.281 63.3335)"><tspan x="0" y="-20" class="st13">Remaining days</tspan></text></g>
         </g>
 </svg>
 </template>
@@ -105,6 +112,7 @@
     .st10{font-family:'Montserrat'; font-weight: 700}
     .st11{font-size:22px;}
     .st12{font-size:12px;}
+    .st13{font-size:9px;}
     .clickable{
         cursor: pointer;
     }
